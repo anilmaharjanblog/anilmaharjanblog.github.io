@@ -66,10 +66,50 @@
       transition: color 0.2s;
     }
     .sidebar a:hover {
-      color: #38b45e;
+      color: #e67e22; /* Orange for countdown */
     }
     .sidebar a:last-child {
       border-bottom: none;
+    }
+
+    /* Countdown Modal Specific Styles */
+    .counter-box {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+      border: 1px solid var(--border-color);
+    }
+    .counter-box:hover {
+      transform: translateY(-3px);
+    }
+    .display-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #e67e22;
+    }
+    .display-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      opacity: 0.8;
+    }
+    .main-heading, .subheading {
+      color: #e67e22;
+    }
+    #message {
+      color: #ff6b6b;
+      font-weight: 600;
+    }
+    .modal-content {
+      background-color: var(--bg-primary) !important;
+      color: var(--text-primary) !important;
+    }
+    .modal-header {
+      border-bottom: 1px solid var(--border-color) !important;
     }
   </style>
 </head>
@@ -107,10 +147,11 @@
       <div class="col-lg-4">
         <div class="sidebar">
           <h5>Quick Links</h5>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#dateConverterModal">मिति रूपान्तरण</a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#dateConverterModal">Date Converter</a>
           <a href="#" data-bs-toggle="modal" data-bs-target="#goldRateModal">Gold & Silver Rates</a>
           <a href="#" data-bs-toggle="modal" data-bs-target="#nepaliUnicodeModal">Nepali Unicode</a>
           <a href="#" data-bs-toggle="modal" data-bs-target="#forexModal">Nepal Exchange Rates</a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#countdownModal">Reverse Day Counter</a>
           <a href="https://www.youtube.com/@kho" target="_blank" rel="noopener">My YouTube Channel</a>
           <a href="https://dropbox.com/your-audio-page" target="_blank" rel="noopener">Audio Stories</a>
           <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
@@ -127,61 +168,37 @@
     </div>
   </footer>
 
+  <!-- === ALL MODALS BELOW === -->
+
   <!-- Date Converter Modal -->
   <div class="modal fade" id="dateConverterModal" tabindex="-1" aria-labelledby="dateConverterModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 320px; margin: auto;">
       <div class="modal-content" style="background-color: #1e1e1e; color: #ffffff; border: 1px solid #333; border-radius: 10px; overflow: hidden; padding: 12px;">
         <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center; position: relative;">
-          <h6 class="modal-title" id="dateConverterModalLabel" style="font-weight: bold; color: #21ADE2; margin: 0; font-size: 1.05rem;">
-            <u>Nepali Date Converter</u>
-          </h6>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            style="filter: invert(1); background: none; border: none; padding: 4px; margin-left: auto; margin-right: 0;"></button>
+          <h6 class="modal-title" id="dateConverterModalLabel" style="font-weight: bold; color: #21ADE2; margin: 0; font-size: 1.05rem;">Nepali Date Converter</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
         </div>
         <div class="modal-body p-0 mt-2" style="text-align: center;">
-          <iframe 
-            src="https://www.ashesh.com.np/linkdate-converter.php?h_color=21ADE2&b_color=CFE4B1&api=240116p384" 
-            frameborder="0" 
-            scrolling="no" 
-            marginwidth="0" 
-            marginheight="0" 
-            style="border: none; overflow: hidden; width: 100%; height: 186px;" 
-            allowtransparency="true">
-          </iframe>
+          <iframe src="https://www.ashesh.com.np/linkdate-converter.php?h_color=21ADE2&b_color=CFE4B1&api=240116p384" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border: none; width: 100%; height: 186px;" allowtransparency="true"></iframe>
           <br>
-          <span style="color: #aaa; font-size: 10px; text-align: left; display: block; margin-top: 6px;">
-            
-          </span>
+          
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Gold & Silver Rates Modal -->
+  <!-- Gold Rates Modal -->
   <div class="modal fade" id="goldRateModal" tabindex="-1" aria-labelledby="goldRateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 340px; margin: auto;">
       <div class="modal-content" style="background-color: #1e1e1e; color: #ffffff; border: 1px solid #333; border-radius: 10px; overflow: hidden; padding: 12px;">
-        <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center; position: relative;">
-          <h6 class="modal-title" id="goldRateModalLabel" style="font-weight: bold; color: #0077e5; margin: 0; font-size: 1.05rem;">
-            <u>Gold & Silver Rates</u>
-          </h6>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            style="filter: invert(1); background: none; border: none; padding: 4px; margin-left: auto; margin-right: 0;"></button>
+        <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center;">
+          <h6 class="modal-title" id="goldRateModalLabel" style="font-weight: bold; color: #0077e5; margin: 0; font-size: 1.05rem;">Gold & Silver Rates</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
         </div>
         <div class="modal-body p-0 mt-2" style="text-align: center;">
-          <iframe 
-            src="https://www.ashesh.com.np/gold/widget.php?api=240114p546&header_color=0077e5" 
-            frameborder="0" 
-            scrolling="no" 
-            marginwidth="0" 
-            marginheight="0" 
-            style="border: none; overflow: hidden; width: 100%; height: 265px; border-radius: 5px;" 
-            allowtransparency="true">
-          </iframe>
+          <iframe src="https://www.ashesh.com.np/gold/widget.php?api=240114p546&header_color=0077e5" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border: none; width: 100%; height: 265px; border-radius: 5px;" allowtransparency="true"></iframe>
           <br>
-          <span style="color: #aaa; font-size: 10px; text-align: left; display: block; margin-top: 6px;">
-           
-          </span>
+          
         </div>
       </div>
     </div>
@@ -191,60 +208,81 @@
   <div class="modal fade" id="nepaliUnicodeModal" tabindex="-1" aria-labelledby="nepaliUnicodeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 400px; margin: auto;">
       <div class="modal-content" style="background-color: #1e1e1e; color: #ffffff; border: 1px solid #333; border-radius: 10px; overflow: hidden; padding: 12px;">
-        <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center; position: relative;">
-          <h6 class="modal-title" id="nepaliUnicodeModalLabel" style="font-weight: bold; color: #4CAF50; margin: 0; font-size: 1.05rem;">
-            <u>Nepali Unicode</u>
-          </h6>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            style="filter: invert(1); background: none; border: none; padding: 4px; margin-left: auto; margin-right: 0;"></button>
+        <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center;">
+          <h6 class="modal-title" id="nepaliUnicodeModalLabel" style="font-weight: bold; color: #4CAF50; margin: 0; font-size: 1.05rem;">Nepali Unicode</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
         </div>
         <div class="modal-body p-0 mt-2" style="text-align: center;">
-          <iframe 
-            src="https://www.ashesh.com.np/linknepali-unicode3.php?api=240119p535" 
-            width="100%" 
-            height="400" 
-            frameborder="0" 
-            border="no" 
-            scrolling="no" 
-            marginwidth="0" 
-            marginheight="0" 
-            allowtransparency="true"
-            style="border: none; display: block;">
-          </iframe>
+          <iframe src="https://www.ashesh.com.np/linknepali-unicode3.php?api=240119p535" width="100%" height="400" frameborder="0" border="no" scrolling="no" marginwidth="0" marginheight="0" allowtransparency="true" style="border: none;"></iframe>
           <br>
-          <span style="color: #aaa; font-size: 10px; text-align: left; display: block; margin-top: 6px;">
-           
-          </span>
+          
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Nepal Exchange Rates (Forex) Modal -->
+  <!-- Forex Modal -->
   <div class="modal fade" id="forexModal" tabindex="-1" aria-labelledby="forexModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 420px; margin: auto;">
       <div class="modal-content" style="background-color: #1e1e1e; color: #ffffff; border: 1px solid #333; border-radius: 10px; overflow: hidden; padding: 12px;">
-        <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center; position: relative;">
-          <h6 class="modal-title" id="forexModalLabel" style="font-weight: bold; color: #38b45e; margin: 0; font-size: 1.05rem;">
-            <u>Nepal Exchange Rates</u>
-          </h6>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            style="filter: invert(1); background: none; border: none; padding: 4px; margin-left: auto; margin-right: 0;"></button>
+        <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center;">
+          <h6 class="modal-title" id="forexModalLabel" style="font-weight: bold; color: #38b45e; margin: 0; font-size: 1.05rem;">Nepal Exchange Rates</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
         </div>
         <div class="modal-body p-0 mt-2" style="text-align: center;">
-          <iframe 
-            src="https://www.ashesh.com.np/forex/widget2.php?api=250115p060&header_color=38b45e&background_color=faf8ee&header_title=Nepal%20Exchange%20Rates" 
-            frameborder="0" 
-            scrolling="no" 
-            marginwidth="0" 
-            marginheight="0" 
-            style="border: none; overflow: hidden; width: 100%; height: 680px; border-radius: 5px;" 
-            allowtransparency="true">
-          </iframe>
+          <iframe src="https://www.ashesh.com.np/forex/widget2.php?api=250115p060&header_color=38b45e&background_color=faf8ee&header_title=Nepal%20Exchange%20Rates" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border: none; width: 100%; height: 700px; border-radius: 5px;" allowtransparency="true"></iframe>
           <br>
-          <span style="color: #aaa; font-size: 10px; text-align: left; display: block; margin-top: 6px;">
-           
-          </span>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reverse Day Counter Modal -->
+  <div class="modal fade" id="countdownModal" tabindex="-1" aria-labelledby="countdownModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 500px; margin: auto;">
+      <div class="modal-content">
+        <div class="modal-header text-center" style="border-bottom: 1px solid var(--border-color);">
+          <h5 class="modal-title w-100 main-heading" id="countdownModalLabel">Reverse Day Counter</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <p class="text-center subheading">Countdown to <strong>December 31, 2026</strong></p>
+            
+            <div class="mb-3 text-center">
+              <input type="date" id="targetDate" class="form-control d-inline-block w-auto" />
+              <button id="setDateBtn" class="btn btn-primary ms-2">Update</button>
+            </div>
+
+            <div class="row justify-content-center g-2 mb-3">
+              <div class="col-6 col-md-3">
+                <div class="counter-box">
+                  <div id="days" class="display-number">--</div>
+                  <div class="display-label">Days</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="counter-box">
+                  <div id="hours" class="display-number">--</div>
+                  <div class="display-label">Hours</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="counter-box">
+                  <div id="minutes" class="display-number">--</div>
+                  <div class="display-label">Minutes</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="counter-box">
+                  <div id="seconds" class="display-number">--</div>
+                  <div class="display-label">Seconds</div>
+                </div>
+              </div>
+            </div>
+            <div id="message" class="text-center"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -252,6 +290,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // === BLOG POSTS ===
     const blogData = [
       {
         id: 1,
@@ -295,9 +334,9 @@
         container.innerHTML += card;
       });
     }
-
     renderPosts(blogData);
 
+    // === DARK MODE ===
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
     const isDark = localStorage.getItem('darkMode') === 'true';
@@ -305,7 +344,6 @@
       body.classList.add('dark-mode');
       darkModeToggle.textContent = '☀️ Light';
     }
-
     darkModeToggle.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
       const isActive = body.classList.contains('dark-mode');
@@ -315,6 +353,76 @@
 
     document.getElementById('loadMoreBtn').addEventListener('click', () => {
       alert("In a real app, this would fetch more posts!");
+    });
+
+    // === COUNTDOWN MODAL LOGIC ===
+    document.getElementById('countdownModal').addEventListener('show.bs.modal', () => {
+      // Reset to default when opened
+      const defaultDate = '2026-12-31';
+      document.getElementById('targetDate').value = defaultDate;
+      document.getElementById('message').textContent = '';
+      startCountdown(defaultDate);
+    });
+
+    let countdownInterval = null;
+
+    function startCountdown(dateStr) {
+      clearInterval(countdownInterval);
+      const userDate = new Date(dateStr);
+      userDate.setHours(23, 59, 59, 999);
+      const now = new Date();
+
+      if (userDate <= now) {
+        document.getElementById('message').textContent = 'Target date must be in the future.';
+        resetCountdownDisplay();
+        return;
+      }
+
+      function update() {
+        const now = new Date().getTime();
+        const diff = userDate.getTime() - now;
+
+        if (diff <= 0) {
+          clearInterval(countdownInterval);
+          document.getElementById('message').textContent = 'Target date has been reached!';
+          resetCountdownDisplay();
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+      }
+
+      update();
+      countdownInterval = setInterval(update, 1000);
+    }
+
+    function resetCountdownDisplay() {
+      document.getElementById('days').textContent = '--';
+      document.getElementById('hours').textContent = '--';
+      document.getElementById('minutes').textContent = '--';
+      document.getElementById('seconds').textContent = '--';
+    }
+
+    document.getElementById('setDateBtn').addEventListener('click', () => {
+      const inputDate = document.getElementById('targetDate').value;
+      if (!inputDate) {
+        document.getElementById('message').textContent = 'Please select a valid date.';
+        return;
+      }
+      startCountdown(inputDate);
+    });
+
+    // Clean up interval when modal closes
+    document.getElementById('countdownModal').addEventListener('hidden.bs.modal', () => {
+      clearInterval(countdownInterval);
     });
   </script>
 </body>
