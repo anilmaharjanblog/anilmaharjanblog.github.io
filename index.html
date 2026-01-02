@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anil's Blog</title>
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
   <style>
     :root {
       --bg-primary: #ffffff;
@@ -48,8 +46,6 @@
     .load-more-btn {
       transition: opacity 0.2s;
     }
-
-    /* Sidebar styling */
     .sidebar {
       background: var(--sidebar-bg);
       border: 1px solid var(--border-color);
@@ -70,7 +66,7 @@
       transition: color 0.2s;
     }
     .sidebar a:hover {
-      color: #21ADE2;
+      color: #38b45e;
     }
     .sidebar a:last-child {
       border-bottom: none;
@@ -79,7 +75,6 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
     <div class="container">
       <a class="navbar-brand" href="#">Anil's Blog</a>
@@ -99,15 +94,10 @@
     </div>
   </nav>
 
-  <!-- Main Content + Sidebar -->
   <div class="container flex-grow-1">
     <div class="row g-4">
-      <!-- Blog Posts (Main Content) -->
       <div class="col-lg-8">
-        <div class="row g-4" id="blogPosts">
-          <!-- Blog posts will be inserted here -->
-        </div>
-
+        <div class="row g-4" id="blogPosts"></div>
         <div class="text-center mt-5">
           <button id="loadMoreBtn" class="btn btn-primary load-more-btn">Load More</button>
         </div>
@@ -118,6 +108,9 @@
         <div class="sidebar">
           <h5>Quick Links</h5>
           <a href="#" data-bs-toggle="modal" data-bs-target="#dateConverterModal">मिति रूपान्तरण</a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#goldRateModal">Gold & Silver Rates</a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#nepaliUnicodeModal">Nepali Unicode</a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#forexModal">Nepal Exchange Rates</a>
           <a href="https://www.youtube.com/@kho" target="_blank" rel="noopener">My YouTube Channel</a>
           <a href="https://dropbox.com/your-audio-page" target="_blank" rel="noopener">Audio Stories</a>
           <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
@@ -128,26 +121,24 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="bg-light py-4 mt-5 border-top">
     <div class="container text-center text-muted">
       <p>© 2026 Anil Maharjan. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Date Converter Modal – Compact Classic Widget (186px) -->
+  <!-- Date Converter Modal -->
   <div class="modal fade" id="dateConverterModal" tabindex="-1" aria-labelledby="dateConverterModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 320px; margin: auto;">
       <div class="modal-content" style="background-color: #1e1e1e; color: #ffffff; border: 1px solid #333; border-radius: 10px; overflow: hidden; padding: 12px;">
         <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center; position: relative;">
-          <h6 class="modal-title" id="dateConverterModalLabel" style="font-weight: bold; color: #21ADE2; margin: 0; font-size: 1.05rem; flex: 1;">
+          <h6 class="modal-title" id="dateConverterModalLabel" style="font-weight: bold; color: #21ADE2; margin: 0; font-size: 1.05rem;">
             <u>Nepali Date Converter</u>
           </h6>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             style="filter: invert(1); background: none; border: none; padding: 4px; margin-left: auto; margin-right: 0;"></button>
         </div>
         <div class="modal-body p-0 mt-2" style="text-align: center;">
-          <!-- EXACT WIDGET CODE AS PROVIDED -->
           <iframe 
             src="https://www.ashesh.com.np/linkdate-converter.php?h_color=21ADE2&b_color=CFE4B1&api=240116p384" 
             frameborder="0" 
@@ -166,7 +157,99 @@
     </div>
   </div>
 
-  <!-- Bootstrap + Custom JS -->
+  <!-- Gold & Silver Rates Modal -->
+  <div class="modal fade" id="goldRateModal" tabindex="-1" aria-labelledby="goldRateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 340px; margin: auto;">
+      <div class="modal-content" style="background-color: #1e1e1e; color: #ffffff; border: 1px solid #333; border-radius: 10px; overflow: hidden; padding: 12px;">
+        <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center; position: relative;">
+          <h6 class="modal-title" id="goldRateModalLabel" style="font-weight: bold; color: #0077e5; margin: 0; font-size: 1.05rem;">
+            <u>Gold & Silver Rates</u>
+          </h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="filter: invert(1); background: none; border: none; padding: 4px; margin-left: auto; margin-right: 0;"></button>
+        </div>
+        <div class="modal-body p-0 mt-2" style="text-align: center;">
+          <iframe 
+            src="https://www.ashesh.com.np/gold/widget.php?api=240114p546&header_color=0077e5" 
+            frameborder="0" 
+            scrolling="no" 
+            marginwidth="0" 
+            marginheight="0" 
+            style="border: none; overflow: hidden; width: 100%; height: 265px; border-radius: 5px;" 
+            allowtransparency="true">
+          </iframe>
+          <br>
+          <span style="color: #aaa; font-size: 10px; text-align: left; display: block; margin-top: 6px;">
+           
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nepali Unicode Modal -->
+  <div class="modal fade" id="nepaliUnicodeModal" tabindex="-1" aria-labelledby="nepaliUnicodeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 400px; margin: auto;">
+      <div class="modal-content" style="background-color: #1e1e1e; color: #ffffff; border: 1px solid #333; border-radius: 10px; overflow: hidden; padding: 12px;">
+        <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center; position: relative;">
+          <h6 class="modal-title" id="nepaliUnicodeModalLabel" style="font-weight: bold; color: #4CAF50; margin: 0; font-size: 1.05rem;">
+            <u>Nepali Unicode</u>
+          </h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="filter: invert(1); background: none; border: none; padding: 4px; margin-left: auto; margin-right: 0;"></button>
+        </div>
+        <div class="modal-body p-0 mt-2" style="text-align: center;">
+          <iframe 
+            src="https://www.ashesh.com.np/linknepali-unicode3.php?api=240119p535" 
+            width="100%" 
+            height="400" 
+            frameborder="0" 
+            border="no" 
+            scrolling="no" 
+            marginwidth="0" 
+            marginheight="0" 
+            allowtransparency="true"
+            style="border: none; display: block;">
+          </iframe>
+          <br>
+          <span style="color: #aaa; font-size: 10px; text-align: left; display: block; margin-top: 6px;">
+           
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nepal Exchange Rates (Forex) Modal -->
+  <div class="modal fade" id="forexModal" tabindex="-1" aria-labelledby="forexModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 420px; margin: auto;">
+      <div class="modal-content" style="background-color: #1e1e1e; color: #ffffff; border: 1px solid #333; border-radius: 10px; overflow: hidden; padding: 12px;">
+        <div class="modal-header p-1" style="background: #1a1a1a; border-bottom: 1px solid #333; text-align: center; position: relative;">
+          <h6 class="modal-title" id="forexModalLabel" style="font-weight: bold; color: #38b45e; margin: 0; font-size: 1.05rem;">
+            <u>Nepal Exchange Rates</u>
+          </h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="filter: invert(1); background: none; border: none; padding: 4px; margin-left: auto; margin-right: 0;"></button>
+        </div>
+        <div class="modal-body p-0 mt-2" style="text-align: center;">
+          <iframe 
+            src="https://www.ashesh.com.np/forex/widget2.php?api=250115p060&header_color=38b45e&background_color=faf8ee&header_title=Nepal%20Exchange%20Rates" 
+            frameborder="0" 
+            scrolling="no" 
+            marginwidth="0" 
+            marginheight="0" 
+            style="border: none; overflow: hidden; width: 100%; height: 680px; border-radius: 5px;" 
+            allowtransparency="true">
+          </iframe>
+          <br>
+          <span style="color: #aaa; font-size: 10px; text-align: left; display: block; margin-top: 6px;">
+           
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const blogData = [
@@ -215,7 +298,6 @@
 
     renderPosts(blogData);
 
-    // Dark mode toggle
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
     const isDark = localStorage.getItem('darkMode') === 'true';
